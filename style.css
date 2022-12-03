@@ -1,0 +1,13 @@
+body{
+    margin: 0;
+}
+
+main{
+    display: flex;
+}
+
+.controls{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
