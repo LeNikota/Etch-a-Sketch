@@ -4,6 +4,7 @@ const DEACTIVATED_BACKGROUND_COLOR = 'unset'
 const DEACTIVATED_TEXT_COLOR = '#333333'
 
 let canvas = document.querySelector('.canvas');
+let colorPickerWheel = document.querySelector('#color-picker-wheel');
 let pickedColor = document.querySelector('#picked-color');
 let rainbow = document.querySelector('#rainbow');
 let erase = document.querySelector('#erase');
@@ -26,12 +27,19 @@ for (let i = 0; i < gridSize**2; i++) {
     gridBox.setAttribute('draggable', 'false');
     gridBox.classList.add('grid-item');
     gridBox.addEventListener('mouseover', changeColor);
+    gridBox.addEventListener('mousedown', changeColor);
     canvas.appendChild(gridBox);
 }
 
 function changeColor(e){
-    if(mousedown){
-        e.target.style.backgroundColor = pickedColor.value;
+    if(!mousedown && e.type === 'mouseover') return;
+    
+    switch (currentMode) {
+        case 'pickedColor':
+            e.target.style.backgroundColor = colorPickerWheel.value;
+            break;
+        case 'rainbow':
+            e.target.style.backgroundColor = `rgb(${getRandomNumber()},${getRandomNumber()},${getRandomNumber()})`;
     }
 }
 
@@ -64,4 +72,8 @@ function activateButton(newMode){
             erase.classList.add('active');
             break;
     }
+}
+
+function getRandomNumber(){
+    return Math.floor(Math.random()*256);
 }

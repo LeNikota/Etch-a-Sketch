@@ -82,7 +82,7 @@ input, button{
     padding: 0;
 }
 
-#color-picker{
+#color-picker-wheel{
     border: none;
     padding: unset;
     width: 100px;
