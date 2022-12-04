@@ -67,6 +67,8 @@ input, button{
     color: var(--text);
     height: 45px;
     width: 220px;
+
+    transition: transform 0.4s, box-shadow  0.4s;
 }
 
 ::-webkit-color-swatch{
@@ -83,9 +85,15 @@ input, button{
     padding: unset;
     width: 100px;
     height: 100px;
+    border-radius: 50px;
 }
 
 button.active{
     background-color: var(--text);
     color: var(--text-selected);
+}
+
+button:hover, input:hover{
+    transform: scale(1.10);
+    box-shadow: black 0 15px 30px -20px;
 }
