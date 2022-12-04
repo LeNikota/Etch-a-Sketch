@@ -40,6 +40,10 @@ function changeColor(e){
             break;
         case 'rainbow':
             e.target.style.backgroundColor = `rgb(${getRandomNumber()},${getRandomNumber()},${getRandomNumber()})`;
+            break;
+        case 'erase':
+            e.target.style.backgroundColor = 'white';
+            break;
     }
 }
 
