@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-:root{
+:root {
     --primary: #e0e1dd;
     --secondary: #E1F4F3;
     /*--secondary: #778da9;*/
     /*--tertiary: #1b263b;*/
     --tertiary: #706C61;
-    --text: #333333;   
-    --text-selected: #e2e2e2;   
+    --text: #333333;
+    --text-selected: #e2e2e2;
 }
 
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
+body {
     margin: 0;
     background-color: var(--primary);
     font-family: 'Roboto', sans-serif;
@@ -22,7 +22,7 @@ body{
     color: var(--text);
 }
 
-main{
+main {
     display: flex;
     justify-content: space-evenly;
     gap: 100px;
@@ -30,7 +30,7 @@ main{
     max-width: 1000px;
 }
 
-h1{
+h1 {
     font-size: 4.5rem;
     letter-spacing: 2px;
     font-weight: 900;
@@ -38,7 +38,7 @@ h1{
     color: var(--text);
 }
 
-.controls{
+.controls {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +46,7 @@ h1{
     gap: 45px;
 }
 
-.canvas{
+.canvas {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
@@ -60,21 +60,22 @@ h1{
     user-select: none;
 }
 
-input, button{
+input,
+button {
     cursor: pointer;
     border: var(--text) 1px solid;
     border-radius: 5px;
     outline: unset;
     background-color: unset;
-        font-size: 1.2rem;
-        color: var(--text);
+    font-size: 1.2rem;
+    color: var(--text);
     height: 45px;
     width: 220px;
 
-    transition: transform 0.4s, box-shadow  0.4s;
+    transition: transform 0.4s, box-shadow 0.4s;
 }
 
-::-webkit-color-swatch{
+::-webkit-color-swatch {
     border: none;
     border-radius: 50px;
 }
@@ -83,7 +84,16 @@ input, button{
     padding: 0;
 }
 
-#color-picker-wheel{
+::-moz-color-swatch {
+    border: none;
+    border-radius: 50px;
+}
+
+::-moz-color-swatch-wrapper {
+    padding: 0;
+}
+
+#color-picker-wheel {
     border: none;
     padding: unset;
     width: 100px;
@@ -91,16 +101,127 @@ input, button{
     border-radius: 50px;
 }
 
-button.active{
+button.active {
     background-color: var(--text);
     color: var(--text-selected);
 }
 
-button:hover, input:hover{
+button:hover,
+input[type='color']:hover {
     transform: scale(1.10);
     box-shadow: black 0 15px 30px -20px;
 }
 
-h2{
+h2 {
     font-weight: lighter;
 }
+
+
+/* Custom slider, what a chaos*/
+input[type=range] {
+    -webkit-appearance: none;
+    align-self: stretch;
+    background: transparent;
+    border: none;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 25px;
+    width: 25px;
+    border-radius: 50px;
+    background: var(--text);
+    cursor: pointer;
+    margin-top: -8px;
+}
+
+input[type=range]::-webkit-color-swatch {
+    border: none;
+    border-radius: 50px;
+}
+
+::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 25px;
+    width: 25px;
+    border: unset;
+    border-radius: 50px;
+    background: var(--text);
+    cursor: pointer;
+    margin-top: -8px;
+}
+
+input[type=range]::-ms-thumb {
+    -webkit-appearance: none;
+    height: 25px;
+    width: 25px;
+    border-radius: 50px;
+    background: var(--text);
+    cursor: pointer;
+    margin-top: -8px;
+}
+
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--text);
+  }
+  
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: white;
+  }
+  
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--text);
+  }
+  
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--text);
+  }
+  input[type=range]::-ms-fill-lower {
+    background: var(--text);
+    border: 1px solid var(--text);
+    border-radius: 10px;
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background: white;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: var(--text);
+    border: 1px solid var(--text);
+    border-radius: 10px;
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: white;
+  }
