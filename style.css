@@ -2,27 +2,34 @@
 
 :root{
     --primary: #e0e1dd;
-    --secondary: #415a77;
+    --secondary: #E1F4F3;
     /*--secondary: #778da9;*/
     /*--tertiary: #1b263b;*/
-    --tertiary: #0d1b2a;
+    --tertiary: #706C61;
     --text: #333333;   
+    --text-selected: #e2e2e2;   
+}
+
+*{
+    box-sizing: border-box;
 }
 
 body{
     margin: 0;
     background-color: var(--primary);
+    font-family: 'Roboto', sans-serif;
 }
 
 main{
     display: flex;
-    justify-content: space-between;
-    margin: 0 200px;
+    justify-content: space-evenly;
+    gap: 100px;
+    margin: 100px auto;
+    max-width: 1000px;
 }
 
 h1{
     text-align: center;
-    font-family: 'Roboto', sans-serif;
     font-size: 4.5rem;
     letter-spacing: 2px;
     font-weight: 900;
@@ -33,6 +40,9 @@ h1{
 .controls{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
 }
 
 .canvas{
@@ -45,4 +55,37 @@ h1{
 
     background-color: white;
     box-shadow: black 0 0 20px -10px;
+}
+
+input, button{
+    cursor: pointer;
+    border: var(--text) 1px solid;
+    border-radius: 5px;
+    outline: unset;
+    background-color: unset;
+    font-size: 1.2rem;
+    color: var(--text);
+    height: 45px;
+    width: 220px;
+}
+
+::-webkit-color-swatch{
+    border: none;
+    border-radius: 50px;
+}
+
+::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+#color-picker{
+    border: none;
+    padding: unset;
+    width: 100px;
+    height: 100px;
+}
+
+button.active{
+    background-color: var(--text);
+    color: var(--text-selected);
 }
