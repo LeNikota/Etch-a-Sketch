@@ -1,5 +1,5 @@
 let canvas = document.querySelector('.canvas');
-let gridSize = 32;
+let gridSize = 16;
 
 
 for (let i = 0; i < gridSize; i++) {
