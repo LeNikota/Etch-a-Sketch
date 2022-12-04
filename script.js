@@ -5,12 +5,13 @@ const DEACTIVATED_TEXT_COLOR = '#333333'
 const DEFAULT_GRID_SIZE = 16;
 
 let canvas = document.querySelector('.canvas');
-let colorPickerWheel = document.querySelector('#color-picker-wheel');
-let pickedColor = document.querySelector('#picked-color');
-let rainbow = document.querySelector('#rainbow');
-let erase = document.querySelector('#erase');
-let clear = document.querySelector('#clear');
-let selectedGridSize = 30;
+let colorPickerWheel = document.getElementById('color-picker-wheel');
+let pickedColor = document.getElementById('picked-color');
+let rainbow = document.getElementById('rainbow');
+let erase = document.getElementById('erase');
+let clear = document.getElementById('clear');
+let gridSizeSlider = document.getElementById('grid-size-slider');
+let gridSizeDisplay = document.getElementById('grid-size-display');
 
 let gridSize = 16;
 let mousedown = false;
@@ -20,6 +21,7 @@ pickedColor.addEventListener('click', () => setMode('pickedColor'));
 rainbow.addEventListener('click', () => setMode('rainbow'));
 erase.addEventListener('click', () => setMode('erase'));
 clear.addEventListener('click', reloadGrid)
+gridSizeSlider.addEventListener('change', reloadGrid)
 document.addEventListener('mousedown', () => mousedown = true)
 document.addEventListener('mouseup', () => mousedown = false)
 
@@ -76,7 +78,9 @@ function getRandomNumber(){
 
 function reloadGrid() {
     clearGird();
-    setupGrid(selectedGridSize);
+    setupGrid(gridSizeSlider.value);
+
+    gridSizeDisplay.textContent = `${gridSizeSlider.value} x ${gridSizeSlider.value}`
 }
 
 function clearGird(){

@@ -18,6 +18,8 @@ body{
     margin: 0;
     background-color: var(--primary);
     font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: var(--text);
 }
 
 main{
@@ -29,7 +31,6 @@ main{
 }
 
 h1{
-    text-align: center;
     font-size: 4.5rem;
     letter-spacing: 2px;
     font-weight: 900;
@@ -65,8 +66,8 @@ input, button{
     border-radius: 5px;
     outline: unset;
     background-color: unset;
-    font-size: 1.2rem;
-    color: var(--text);
+        font-size: 1.2rem;
+        color: var(--text);
     height: 45px;
     width: 220px;
 
@@ -98,4 +99,8 @@ button.active{
 button:hover, input:hover{
     transform: scale(1.10);
     box-shadow: black 0 15px 30px -20px;
+}
+
+h2{
+    font-weight: lighter;
 }
