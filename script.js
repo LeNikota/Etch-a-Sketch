@@ -9,6 +9,7 @@ let pickedColorBtn = document.getElementById('picked-color');
 let rainbow = document.getElementById('rainbow');
 let shading = document.getElementById('shading');
 let lightenBtn = document.getElementById('lighten');
+let colorGrabberBtn = document.getElementById('color-grabber');
 let fillBtn = document.getElementById('fill');
 let erase = document.getElementById('erase');
 let clear = document.getElementById('clear');
@@ -23,6 +24,7 @@ pickedColorBtn.addEventListener('click', () => setMode('pickedColor'));
 rainbow.addEventListener('click', () => setMode('rainbow'));
 shading.addEventListener('click', () => setMode('shading'));
 lightenBtn.addEventListener('click', () => setMode('lighten'));
+colorGrabberBtn.addEventListener('click', () => setMode('grabAColor'));
 fillBtn.addEventListener('click', () => setMode('fill'));
 erase.addEventListener('click', () => setMode('erase'));
 clear.addEventListener('click', reloadGrid)
@@ -50,7 +52,8 @@ function changeColor(e){
             lighten(e);
             break;
         case 'grabAColor':
-            
+            colorPickerWheel.value = convertColorFromDecToHex(e.target.style.backgroundColor);
+            setMode('pickedColor');
             break;
         case 'fill':
             fill(e);
@@ -77,6 +80,9 @@ function activateButton(newMode){
         case 'lighten':
             lightenBtn.classList.remove('active');
             break;
+        case 'grabAColor':
+            colorGrabberBtn.classList.remove('active');
+            break;
         case 'fill':
             fillBtn.classList.remove('active');
             break;
@@ -97,6 +103,9 @@ function activateButton(newMode){
             break;
         case 'lighten':
             lightenBtn.classList.add('active');
+            break;
+        case 'grabAColor':
+            colorGrabberBtn.classList.add('active');
             break;
         case 'fill':
             fillBtn.classList.add('active');
@@ -198,6 +207,11 @@ function fill(e) {
 
 function convertColorFromHexToDec(hexColor){
     return 'rgb(' + hexColor.slice(1).replace(/(\d{2}|\w{2})/g, '$1 ').trim().split(' ').map(e => parseInt(e, 16)).join(', ') + ')';
+}
+
+function convertColorFromDecToHex(decColor){
+    console.log(decColor)
+    return '#' + decColor.replace(/[\D(),]/g,' ').trim().split('  ').map(e => ((+e).toString(16).length === 2) ? (+e).toString(16) : '0' + (+e).toString(16)).join('');
 }
 
 function findClickedLocation(e){
