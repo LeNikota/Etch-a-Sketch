@@ -8,6 +8,7 @@ let colorPickerWheel = document.getElementById('color-picker-wheel');
 let pickedColorBtn = document.getElementById('picked-color');
 let rainbow = document.getElementById('rainbow');
 let shading = document.getElementById('shading');
+let lightenBtn = document.getElementById('lighten');
 let fillBtn = document.getElementById('fill');
 let erase = document.getElementById('erase');
 let clear = document.getElementById('clear');
@@ -21,6 +22,7 @@ let grid = [];
 pickedColorBtn.addEventListener('click', () => setMode('pickedColor'));
 rainbow.addEventListener('click', () => setMode('rainbow'));
 shading.addEventListener('click', () => setMode('shading'));
+lightenBtn.addEventListener('click', () => setMode('lighten'));
 fillBtn.addEventListener('click', () => setMode('fill'));
 erase.addEventListener('click', () => setMode('erase'));
 clear.addEventListener('click', reloadGrid)
@@ -44,6 +46,12 @@ function changeColor(e){
         case 'shading':
             shade(e);
             break;
+        case 'lighten':
+            lighten(e);
+            break;
+        case 'grabAColor':
+            
+            break;
         case 'fill':
             fill(e);
             break;
@@ -66,6 +74,9 @@ function activateButton(newMode){
         case 'shading':
             shading.classList.remove('active');
             break;
+        case 'lighten':
+            lightenBtn.classList.remove('active');
+            break;
         case 'fill':
             fillBtn.classList.remove('active');
             break;
@@ -83,6 +94,9 @@ function activateButton(newMode){
             break;
         case 'shading':
             shading.classList.add('active');
+            break;
+        case 'lighten':
+            lightenBtn.classList.add('active');
             break;
         case 'fill':
             fillBtn.classList.add('active');
@@ -143,6 +157,19 @@ function shade(e) {
             }
             else{
                 return 0;
+            }
+        }).join(', ') + ')';
+}
+
+function lighten(e){
+    e.target.style.backgroundColor = 'rgb(' +
+        e.target.style.backgroundColor.replace(/\D+/g, ' ').trim().split(' ').map(e => {
+            if(e >= 255) return e;
+            if(e / 255 < 0.9){
+                return (+e + 25.5);
+            }
+            else{
+                return 255;
             }
         }).join(', ') + ')';
 }
