@@ -25,6 +25,7 @@ body {
 main {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     gap: 100px;
     margin: 100px auto;
     max-width: 1000px;
@@ -43,7 +44,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 45px;
+    gap: 15px;
 }
 
 .canvas {
@@ -58,6 +59,8 @@ h1 {
     box-shadow: black 0 0 20px -10px;
 
     user-select: none;
+
+    flex: none;
 }
 
 input,
@@ -225,3 +228,27 @@ input[type=range]::-webkit-slider-runnable-track {
   input[type=range]:focus::-ms-fill-upper {
     background: white;
   }
+
+@media (max-width:960px){
+    main{
+        flex-direction: column-reverse;
+        align-items: center;
+        gap:50px;
+    }
+
+    .controls{
+        gap:10px;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    #color-picker-wheel{
+        flex: none;
+        margin: 0 40%;
+    }
+
+    #grid-size-controls{
+        flex: none;
+        margin: 0 40%;
+    }
+}
